@@ -1,5 +1,6 @@
 .App {
 	text-align: center;
+	-webkit-appearance: none;
 	--header-red: #e77361;
 	--main-yellow: #ffdf9b;
 	--hover-yellow: #fcce6d;
@@ -35,31 +36,33 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	font-size: calc(10px + 15vmin);
+	font-size: calc(10px + 12vmin);
 	font-weight: 200;
 	color: white;
 }
 
 .HomePage-header {
 	width: 100%;
-	height: 32vh;
+	height: 26vh;
 	background-color: var(--header-red);
-	display: block;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding-bottom: 2vh;
 }
 
 .HomePage-header-title {
-	margin: 3.5vh 0;
+	margin-top: auto;
+	margin-bottom: auto;
 	vertical-align: middle;
 }
 
 .graph-buttons {
 	width: 100vw;
-	height: 34vh;
+	height: 36vh;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
-	padding-right: 8vw;
-	padding-left: 8vw;
 }
 
 .GraphButton {
@@ -70,13 +73,58 @@
 	mix-blend-mode: overlay;
 	height: 27vh;
 	width: 35vw;
-	margin: auto 8vw;
-	/* margin-right: 2vw;
-	margin-left: 2vw; */
+	margin: auto 6vw;
 	overflow: hidden;
-	/* max-width: 100%; */
 }
 
-.GraphButton:hover {
+.GraphButton:hover,
+.GraphButton:focus {
 	background: var(--hover-yellow);
+	cursor: pointer;
+}
+
+.GraphPage {
+	min-height: 100vh;
+	width: 100%;
+}
+
+.GraphPage-header {
+	width: 100%;
+	height: 8vh;
+	background-color: #e77361;
+	color: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+}
+
+.GraphPage-contents {
+	min-height: 92vh;
+	width: 100%;
+}
+
+.graph-info,
+.graph-info-container {
+	background: var(--main-yellow);
+	min-height: 92vh;
+}
+
+.graph-info-container {
+	background: #ffdf9b80;
+	width: calc(90px + 19vw);
+}
+
+.graph-info {
+	width: calc(70px + 17vw);
+}
+
+.back-arrow {
+	width: 4vh;
+	margin-left: calc(10px + 1vw);
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.back-arrow:hover {
+	cursor: pointer;
 }

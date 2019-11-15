@@ -3,6 +3,12 @@ import GraphButton from "./GraphButton";
 import "./App.css";
 
 class HomePage extends Component {
+	constructor(props) {
+		super(props);
+
+		this.state = { history: this.props.history };
+	}
+
 	render() {
 		return (
 			<div className="HomePage">
