@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
-import HomePage from "./HomePage";
-import GraphPage from "./GraphPage";
-import history from "./history";
+import HomePage from "./pages/HomePage";
+import GraphPage from "./pages/GraphPage";
+import history from "./utils/history";
 
 function App() {
 	return (

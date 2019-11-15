@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import GraphButton from "./GraphButton";
-import "./App.css";
+import GraphButton from "../components/GraphButton";
 
 class HomePage extends Component {
 	constructor(props) {

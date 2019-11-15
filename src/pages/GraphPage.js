@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
-// import backArrow from "./backArrow.svg";
-import backArrow from "./back-arrow.svg";
+import backArrow from "../graphics/back-arrow.svg";
 
 class GraphPage extends Component {
 	constructor(props) {
