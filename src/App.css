@@ -1,22 +1,82 @@
 .App {
-  text-align: center;
+	text-align: center;
+	--header-red: #e77361;
+	--main-yellow: #ffdf9b;
+	--hover-yellow: #fcce6d;
+	--button-text: #5e4b25;
 }
 
 .App-logo {
-  height: 40vmin;
+	height: 40vmin;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
 }
 
 .App-link {
-  color: #09d3ac;
+	color: #09d3ac;
+}
+
+.HomePage {
+	/* background-color: #fff; */
+	background: url(homepageBackground.svg);
+	background-size: contain;
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 15vmin);
+	font-weight: 200;
+	color: white;
+}
+
+.HomePage-header {
+	width: 100%;
+	height: 32vh;
+	background-color: var(--header-red);
+	display: block;
+}
+
+.HomePage-header-title {
+	margin: 3.5vh 0;
+	vertical-align: middle;
+}
+
+.graph-buttons {
+	width: 100vw;
+	height: 34vh;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding-right: 8vw;
+	padding-left: 8vw;
+}
+
+.GraphButton {
+	font-size: calc(10px + 8vmin);
+	font-weight: 300;
+	color: var(--button-text);
+	background: var(--main-yellow);
+	mix-blend-mode: overlay;
+	height: 27vh;
+	width: 35vw;
+	margin: auto 8vw;
+	/* margin-right: 2vw;
+	margin-left: 2vw; */
+	overflow: hidden;
+	/* max-width: 100%; */
+}
+
+.GraphButton:hover {
+	background: var(--hover-yellow);
 }
