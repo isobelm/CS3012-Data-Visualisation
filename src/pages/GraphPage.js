@@ -1,10 +1,15 @@
 import React, { Component } from "react";
-import backArrow from "../graphics/back-arrow.svg";
+import backArrow from "../graphics/back-arrow-v-narrow.svg";
 
 class GraphPage extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { history: this.props.history };
+		this.state = {
+			history: this.props.history,
+			graph: this.props.graph,
+			info: this.props.info,
+			title: this.props.title,
+		};
 	}
 
 	render() {
@@ -17,12 +22,15 @@ class GraphPage extends Component {
 						alt="back"
 						onClick={this.back}
 					></img>
+					<div className="GraphPage-header-text">
+						{this.state.title}
+					</div>
 				</div>
 				<div className="GraphPage-contents">
 					<div className="graph-info-container">
-						<div className="graph-info"></div>
+						<div className="graph-info">{this.state.info()}</div>
 					</div>
-					<div className="graph-container"></div>
+					<div className="graph-container">{this.state.graph()}</div>
 				</div>
 			</div>
 		);

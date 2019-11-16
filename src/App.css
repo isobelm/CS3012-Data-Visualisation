@@ -27,7 +27,6 @@
 }
 
 .HomePage {
-	/* background-color: #fff; */
 	background: url(graphics/homepageBackground.svg);
 	background-size: contain;
 	min-height: 100vh;
@@ -71,8 +70,8 @@
 	color: var(--button-text);
 	background: var(--main-yellow);
 	mix-blend-mode: overlay;
-	height: 27vh;
-	width: 35vw;
+	height: 29vh;
+	width: 30vw;
 	margin: auto 6vw;
 	overflow: hidden;
 }
@@ -86,21 +85,36 @@
 .GraphPage {
 	min-height: 100vh;
 	width: 100%;
+	color: white;
 }
 
 .GraphPage-header {
 	width: 100%;
 	height: 8vh;
 	background-color: #e77361;
-	color: white;
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-start;
+}
+
+.GraphPage-header-text {
+	margin-right: calc(10px + 1vw);
+	margin-left: auto;
+	margin-top: auto;
+	margin-bottom: auto;
+	padding-bottom: 4px;
+	font-weight: 200;
+	font-size: calc(5px + 4.5vmin);
 }
 
 .GraphPage-contents {
-	min-height: 92vh;
+	height: 92vh;
 	width: 100%;
+	display: flex;
+}
+
+.graph-container {
+	min-height: 92vh;
+	width: 68vw;
 }
 
 .graph-info,
@@ -111,11 +125,11 @@
 
 .graph-info-container {
 	background: #ffdf9b80;
-	width: calc(90px + 19vw);
+	width: 32vw;
 }
 
 .graph-info {
-	width: calc(70px + 17vw);
+	width: 26vw;
 }
 
 .back-arrow {
@@ -123,6 +137,7 @@
 	margin-left: calc(10px + 1vw);
 	margin-top: auto;
 	margin-bottom: auto;
+	float: left;
 }
 
 .back-arrow:hover {
