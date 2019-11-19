@@ -1,14 +1,28 @@
 const Octokit = require("@octokit/rest");
 
-export default async function getInteractionData() {
-	const octokit = new Octokit({ userAgent: "isobelm" });
-	let data = {};
-	data.name = "nivo";
-	data.children = [];
-	data.color = "paleYellow";
+class InteractionDataLoader {
+	partsLoaded = 0;
+	octokit = new Octokit({ userAgent: "isobelm" });
 
-	for (let i = 1; i <= 2; i++) {
-		let issues = await octokit.issues.listForRepo({
+	async getInteractionData(loadData) {
+		let data = {};
+		data.name = "nivo";
+		data.children = [];
+		data.color = "paleYellow";
+
+		for (let i = 1; i <= 2; i++) {
+			this.loadIssues(data, i, loadData);
+		}
+
+		for (let i = 1; i <= 8; i++) {
+			this.loadCommits(data, i, loadData);
+		}
+
+		return data;
+	}
+
+	loadIssues = async (data, i, loadData) => {
+		let issues = await this.octokit.issues.listForRepo({
 			owner: "plouc",
 			repo: "nivo",
 			per_page: 100,
@@ -22,7 +36,7 @@ export default async function getInteractionData() {
 			});
 
 			if (user === undefined) {
-				user = addUser(data, issue.user.login);
+				user = this.addUser(data, issue.user.login);
 			}
 			if (issue.pull_request !== undefined) {
 				user.children.find((obj) => {
@@ -34,10 +48,16 @@ export default async function getInteractionData() {
 				}).loc++;
 			}
 		});
-	}
 
-	for (let i = 1; i <= 8; i++) {
-		let commits = await octokit.repos.listCommits({
+		this.partsLoaded++;
+
+		if (this.partsLoaded >= 10) {
+			loadData(data);
+		}
+	};
+
+	loadCommits = async (data, i, loadData) => {
+		let commits = await this.octokit.repos.listCommits({
 			owner: "plouc",
 			repo: "nivo",
 			per_page: 100,
@@ -45,6 +65,20 @@ export default async function getInteractionData() {
 		});
 
 		commits.data.forEach((commit) => {
+			if (commit.committer !== null) {
+				let user = undefined;
+				user = data.children.find((user) => {
+					return user.name === commit.committer.login;
+				});
+
+				if (user === undefined) {
+					user = this.addUser(data, commit.committer.login);
+				}
+
+				user.children.find((obj) => {
+					return obj.name === "commits made";
+				}).loc++;
+			}
 			if (commit.author !== null) {
 				let user = undefined;
 				user = data.children.find((user) => {
@@ -52,42 +86,53 @@ export default async function getInteractionData() {
 				});
 
 				if (user === undefined) {
-					user = addUser(data, commit.author.login);
+					user = this.addUser(data, commit.author.login);
 				}
 
 				user.children.find((obj) => {
-					return obj.name === "commits";
+					return obj.name === "commits authored";
 				}).loc++;
 			}
 		});
-	}
+		this.partsLoaded++;
+		debugger;
 
-	return data;
-}
-
-function addUser(data, userLogin) {
-	let user = {
-		name: userLogin,
-		color: "yellow",
-		children: [
-			{
-				name: "issues",
-				loc: 0,
-				color: "lemon",
-			},
-			{
-				name: "commits",
-				loc: 0,
-				color: "red",
-			},
-			{
-				name: "pull requests",
-				loc: 0,
-				color: "blue",
-			},
-		],
+		if (this.partsLoaded >= 10) {
+			loadData(data);
+		}
 	};
-	data.children.push(Object.assign({}, user));
 
-	return user;
+	addUser(data, userLogin) {
+		let user = {
+			name: userLogin,
+			color: "yellow",
+			children: [
+				{
+					name: "issues",
+					loc: 0,
+					color: "lemon",
+				},
+				{
+					name: "commits authored",
+					loc: 0,
+					color: "red",
+				},
+				{
+					name: "commits made",
+					loc: 0,
+					color: "dark red",
+				},
+				{
+					name: "pull requests",
+					loc: 0,
+					color: "blue",
+				},
+			],
+		};
+		data.children.push(Object.assign({}, user));
+
+		return user;
+	}
 }
+
+export default InteractionDataLoader;

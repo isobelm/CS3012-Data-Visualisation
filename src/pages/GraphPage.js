@@ -8,7 +8,6 @@ class GraphPage extends Component {
 			history: this.props.history,
 			graph: this.props.graph,
 			info: this.props.info,
-			title: this.props.title,
 		};
 	}
 
@@ -23,7 +22,7 @@ class GraphPage extends Component {
 						onClick={this.back}
 					></img>
 					<div className="GraphPage-header-text">
-						{this.state.title}
+						Data Visualisation
 					</div>
 				</div>
 				<div className="GraphPage-contents">

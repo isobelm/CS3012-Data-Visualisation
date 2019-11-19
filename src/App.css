@@ -5,6 +5,7 @@
 	--main-yellow: #ffdf9b;
 	--hover-yellow: #fcce6d;
 	--button-text: #5e4b25;
+	--text-on-yellow: #5a3f2e;
 }
 
 .App-logo {
@@ -59,26 +60,25 @@
 .graph-buttons {
 	width: 100vw;
 	height: 36vh;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
+	display: table;
+	border-spacing: 7vw 4vh;
 }
 
 .GraphButton {
-	font-size: calc(10px + 8vmin);
-	font-weight: 300;
-	color: var(--button-text);
-	background: var(--main-yellow);
 	mix-blend-mode: overlay;
-	height: 29vh;
-	width: 30vw;
-	margin: auto 6vw;
+	display: table-cell;
+	overflow: hidden;
+}
+
+.GraphButton-image {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
 	overflow: hidden;
 }
 
 .GraphButton:hover,
 .GraphButton:focus {
-	background: var(--hover-yellow);
 	cursor: pointer;
 }
 
@@ -116,6 +116,7 @@
 	min-height: 92vh;
 	width: 68vw;
 	color: #3d261d;
+	justify-content: center;
 }
 
 .graph-info,
@@ -143,4 +144,30 @@
 
 .back-arrow:hover {
 	cursor: pointer;
+}
+
+.loading {
+	font-size: 5vmin;
+	font-weight: 200;
+	margin-top: 15vh;
+}
+
+.interaction-graph-legend {
+	margin: 4vmin;
+}
+
+.info-header {
+	color: var(--text-on-yellow);
+	font-size: calc(5px + 3vmin);
+	font-weight: 200;
+	text-align: left;
+	padding: 4vmin;
+}
+
+.info {
+	color: var(--text-on-yellow);
+	font-size: calc(2px + 2vmin);
+	line-height: calc(4px + 3vmin);
+	text-align: left;
+	padding: 0 4vmin;
 }

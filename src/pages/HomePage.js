@@ -23,6 +23,7 @@ class HomePage extends Component {
 				<div className="graph-buttons">
 					<GraphButton title="graph 3" />
 					<GraphButton title="graph 4" />
+					<GraphButton title="graph 4" />
 				</div>
 			</div>
 		);

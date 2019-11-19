@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg preserveAspectRatio="slice" width="100%" height="100%" viewBox="0 0 451 227" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-781,-32)">
+        <rect x="781" y="32" width="451" height="227" style="fill:rgb(255,223,155);"/>
+        <clipPath id="_clip1">
+            <rect x="781" y="32" width="451" height="227"/>
+        </clipPath>
+        <g clip-path="url(#_clip1)">
+            <g transform="matrix(1.89761,0,0,1.89761,-755.854,-49.5414)">
+                <circle cx="850.899" cy="152.656" r="186.752" style="fill:white;fill-opacity:0.5;"/>
+            </g>
+            <g transform="matrix(1,0,0,1,-12.0278,67.5303)">
+                <circle cx="1043.76" cy="37.924" r="113.5" style="fill:rgb(255,223,155);"/>
+                <clipPath id="_clip2">
+                    <circle cx="1043.76" cy="37.924" r="113.5"/>
+                </clipPath>
+                <g clip-path="url(#_clip2)">
+                    <g transform="matrix(0.533762,0,0,0.525546,444.797,10.4789)">
+                        <circle cx="1043.76" cy="37.924" r="113.5" style="fill:white;fill-opacity:0.5;"/>
+                    </g>
+                    <g transform="matrix(0.321381,0,0,0.316434,767.225,54.3245)">
+                        <circle cx="1043.76" cy="37.924" r="113.5" style="fill:white;fill-opacity:0.5;"/>
+                    </g>
+                </g>
+            </g>
+            <circle cx="825.707" cy="195.614" r="97.168" style="fill:rgb(255,223,155);"/>
+            <clipPath id="_clip3">
+                <circle cx="825.707" cy="195.614" r="97.168"/>
+            </clipPath>
+            <g clip-path="url(#_clip3)">
+                <g transform="matrix(0.486705,0,0,0.486705,409.658,57.5404)">
+                    <circle cx="825.707" cy="195.614" r="97.168" style="fill:white;fill-opacity:0.5;"/>
+                </g>
+                <g transform="matrix(0.350981,0,0,0.350981,587.143,144.964)">
+                    <circle cx="825.707" cy="195.614" r="97.168" style="fill:white;fill-opacity:0.5;"/>
+                </g>
+                <g transform="matrix(0.350981,0,0,0.350981,508.538,171.483)">
+                    <circle cx="825.707" cy="195.614" r="97.168" style="fill:white;fill-opacity:0.5;"/>
+                </g>
+            </g>
+            <g transform="matrix(1,0,0,1,-34.9781,-6.93216)">
+                <circle cx="1005.51" cy="277.567" r="56.069" style="fill:rgb(255,223,155);"/>
+                <clipPath id="_clip4">
+                    <circle cx="1005.51" cy="277.567" r="56.069"/>
+                </clipPath>
+                <g clip-path="url(#_clip4)">
+                    <g transform="matrix(0.81435,0,0,0.81435,191.328,47.54)">
+                        <circle cx="1005.51" cy="277.567" r="56.069" style="fill:white;fill-opacity:0.5;"/>
+                    </g>
+                </g>
+            </g>
+            <g transform="matrix(1,0,0,1,-63.2104,-4.38847)">
+                <circle cx="1156.76" cy="270.635" r="51.681" style="fill:rgb(255,223,155);"/>
+                <clipPath id="_clip5">
+                    <circle cx="1156.76" cy="270.635" r="51.681"/>
+                </clipPath>
+                <g clip-path="url(#_clip5)">
+                    <g transform="matrix(0.857804,0,0,0.857804,161.526,35.5229)">
+                        <circle cx="1156.76" cy="270.635" r="51.681" style="fill:white;fill-opacity:0.5;"/>
+                    </g>
+                </g>
+            </g>
+            <g transform="matrix(1,0,0,1,-8.62236,15.5351)">
+                <circle cx="1174.33" cy="180.079" r="38.876" style="fill:rgb(255,223,155);"/>
+                <clipPath id="_clip6">
+                    <circle cx="1174.33" cy="180.079" r="38.876"/>
+                </clipPath>
+                <g clip-path="url(#_clip6)">
+                    <g transform="matrix(0.83077,0,0,0.83077,196.925,32.282)">
+                        <circle cx="1174.33" cy="180.079" r="38.876" style="fill:white;fill-opacity:0.5;"/>
+                    </g>
+                </g>
+            </g>
+            <g transform="matrix(1,0,0,1,39.5617,2.51233)">
+                <circle cx="812.71" cy="11.852" r="76.263" style="fill:rgb(255,223,155);"/>
+                <clipPath id="_clip7">
+                    <circle cx="812.71" cy="11.852" r="76.263"/>
+                </clipPath>
+                <g clip-path="url(#_clip7)">
+                    <g transform="matrix(0.829318,0,0,0.829318,143.73,7.03786)">
+                        <circle cx="812.71" cy="11.852" r="76.263" style="fill:white;fill-opacity:0.5;"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

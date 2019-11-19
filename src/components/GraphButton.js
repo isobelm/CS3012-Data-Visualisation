@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import img from "../graphics/circle_graph.svg";
 
 class GraphButton extends Component {
 	constructor(props) {
@@ -15,7 +16,11 @@ class GraphButton extends Component {
 				onClick={this.onClick}
 				history={this.state.history}
 			>
-				{this.state.title}
+				<img
+					className="GraphButton-image"
+					src={img}
+					alt={this.state.title}
+				/>
 			</div>
 		);
 	}

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import GraphPage from "./GraphPage";
 import { ResponsiveBubble } from "@nivo/circle-packing";
-import getInteractionData from "../backend/InteractionsData";
+import InteractionDataLoader from "../backend/InteractionsData";
 import colours from "../utils/colourSchemes";
+import legend from "../graphics/legend.svg";
 
 class TypesOfInteractionGraph extends Component {
 	constructor(props) {
@@ -25,8 +26,27 @@ class TypesOfInteractionGraph extends Component {
 		);
 	}
 
+	renderInfo = () => {
+		return (
+			<div>
+				<div className="info-header">Types of Interaction</div>
+				<div className="info">
+					This graph shows the ways in which contributors interact
+					with the repository, and how much they interact. The outer
+					circles represent contributors. The inner circles represent
+					interactions, the colour indicating the type of interaction
+					and the size indicating the number of those interactions.
+				</div>
+				<img
+					src={legend}
+					className="interaction-graph-legend"
+					alt="legend"
+				></img>
+			</div>
+		);
+	};
+
 	renderGraph = () => {
-		debugger;
 		if (this.state.dataRecieved) {
 			return (
 				<ResponsiveBubble
@@ -37,45 +57,51 @@ class TypesOfInteractionGraph extends Component {
 					colors={Object.values(colours)}
 					colorBy="color"
 					padding={6}
-					// labelTextColor={{
-					// 	from: "color",
-					// 	modifiers: [["darker", 0.8]],
-					// }}
 					enableLabel={false}
 					borderWidth={2}
 					borderColor={{ from: "color" }}
-					// defs={[
-					// 	{
-					// 		id: "lines",
-					// 		type: "patternLines",
-					// 		background: "none",
-					// 		color: "inherit",
-					// 		rotation: -45,
-					// 		lineWidth: 5,
-					// 		spacing: 8,
-					// 	},
-					// ]}
-					// tooltip={({ id, value, color }) => (
-					// 	<strong style={{ color }}>
-					// 		{id}: {value}
-					// 	</strong>
-					// )}
 					animate={true}
 					motionStiffness={90}
 					motionDamping={12}
+					legends={[
+						{
+							anchor: "top-left",
+							direction: "column",
+							justify: false,
+							translateX: 100,
+							translateY: 0,
+							itemsSpacing: 0,
+							itemDirection: "left-to-right",
+							itemWidth: 80,
+							itemHeight: 20,
+							itemOpacity: 0.75,
+							symbolSize: 12,
+							symbolShape: "circle",
+							symbolBorderColor: "rgba(0, 0, 0, .5)",
+							effects: [
+								{
+									on: "hover",
+									style: {
+										itemBackground: "rgba(0, 0, 0, .03)",
+										itemOpacity: 1,
+									},
+								},
+							],
+						},
+					]}
 				/>
 			);
 		} else {
-			return <div>Loading...</div>;
+			return <div className="loading">Loading...</div>;
 		}
 	};
 
-	getData = async () => {
-		let data = await getInteractionData();
-		this.setState({ data: data, dataRecieved: true });
+	getData = () => {
+		let loader = new InteractionDataLoader();
+		loader.getInteractionData((data) => {
+			this.setState({ data: data, dataRecieved: true });
+		});
 	};
-
-	renderInfo = () => {};
 }
 
 export default TypesOfInteractionGraph;
