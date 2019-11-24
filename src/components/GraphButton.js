@@ -6,7 +6,11 @@ class GraphButton extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = { title: this.props.title, history: this.props.history };
+		this.state = {
+			title: this.props.title,
+			history: this.props.history,
+			page: this.props.page,
+		};
 	}
 
 	render() {
@@ -26,7 +30,7 @@ class GraphButton extends Component {
 	}
 
 	onClick = () => {
-		this.state.history.push(`/graph-page`);
+		this.state.history.push(this.state.page);
 	};
 }
 

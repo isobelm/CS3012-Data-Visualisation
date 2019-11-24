@@ -12,8 +12,8 @@ class HomePage extends Component {
 		return (
 			<div className="HomePage">
 				<div className="graph-buttons">
-					<GraphButton title="graph 1" />
-					<GraphButton title="graph 2" />
+					<GraphButton title="graph 1" page="interaction-types" />
+					<GraphButton title="graph 2" page="commits-per-person" />
 				</div>
 				<div className="HomePage-header">
 					<div className="HomePage-header-title">

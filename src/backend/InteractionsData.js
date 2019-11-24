@@ -65,34 +65,7 @@ class InteractionDataLoader {
 		});
 
 		commits.data.forEach((commit) => {
-			if (commit.committer !== null) {
-				let user = undefined;
-				user = data.children.find((user) => {
-					return user.name === commit.committer.login;
-				});
-
-				if (user === undefined) {
-					user = this.addUser(data, commit.committer.login);
-				}
-
-				user.children.find((obj) => {
-					return obj.name === "commits made";
-				}).loc++;
-			}
-			if (commit.author !== null) {
-				let user = undefined;
-				user = data.children.find((user) => {
-					return user.name === commit.author.login;
-				});
-
-				if (user === undefined) {
-					user = this.addUser(data, commit.author.login);
-				}
-
-				user.children.find((obj) => {
-					return obj.name === "commits authored";
-				}).loc++;
-			}
+			this.addCommit(commit, data);
 		});
 		this.partsLoaded++;
 		debugger;
@@ -101,6 +74,37 @@ class InteractionDataLoader {
 			loadData(data);
 		}
 	};
+
+	addCommit(commit, data) {
+		if (commit.committer !== null && commit.committer.login !== undefined) {
+			let user = undefined;
+			user = data.children.find((user) => {
+				return user.name === commit.committer.login;
+			});
+
+			if (user === undefined) {
+				user = this.addUser(data, commit.committer.login);
+			}
+
+			user.children.find((obj) => {
+				return obj.name === "commits made";
+			}).loc++;
+		}
+		if (commit.author !== null && commit.author.login !== undefined) {
+			let user = undefined;
+			user = data.children.find((user) => {
+				return user.name === commit.author.login;
+			});
+
+			if (user === undefined) {
+				user = this.addUser(data, commit.author.login);
+			}
+
+			user.children.find((obj) => {
+				return obj.name === "commits authored";
+			}).loc++;
+		}
+	}
 
 	addUser(data, userLogin) {
 		let user = {

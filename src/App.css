@@ -65,7 +65,7 @@
 }
 
 .GraphButton {
-	mix-blend-mode: overlay;
+	mix-blend-mode: multiply;
 	display: table-cell;
 	overflow: hidden;
 }
