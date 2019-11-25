@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import GraphPage from "./GraphPage";
-import { ResponsiveBar } from "@nivo/bar";
 import CommitsData from "../backend/CommitsData";
+import { ResponsiveLine } from "@nivo/line";
 
 class Commits extends Component {
 	constructor(props) {
@@ -10,7 +10,7 @@ class Commits extends Component {
 			history: this.props.history,
 			data: undefined,
 			dataRecieved: false,
-			user: this.props.user,
+			user: decodeURIComponent(this.props.match.params.contributor),
 		};
 
 		this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
@@ -30,10 +30,11 @@ class Commits extends Component {
 	renderInfo = () => {
 		return (
 			<div>
-				<div className="info-header">Commits Per Person</div>
+				<div className="info-header">{this.state.user}</div>
 				<div className="info">
-					This graph shows the number of commits made by the 20 people
-					with the most commits.
+					These graphs show the commits and contributions in terms of
+					lines added and deleted of the selected contributor over
+					time.
 				</div>
 			</div>
 		);
@@ -42,79 +43,176 @@ class Commits extends Component {
 	renderGraph = () => {
 		if (this.state.dataRecieved) {
 			return (
-				<ResponsiveBar
-					data={this.state.data}
-					keys={["Commits"]}
-					indexBy="User"
-					margin={{ top: 50, right: 60, bottom: 70, left: 60 }}
-					padding={0.3}
-					colors={{ scheme: "nivo" }}
-					defs={[
-						{
-							id: "dots",
-							type: "patternDots",
-							background: "inherit",
-							color: "#38bcb2",
-							size: 4,
-							padding: 1,
-							stagger: true,
-						},
-						{
-							id: "lines",
-							type: "patternLines",
-							background: "inherit",
-							color: "#eed312",
-							rotation: -45,
-							lineWidth: 6,
-							spacing: 10,
-						},
-					]}
-					borderColor={{
-						from: "color",
-						modifiers: [["darker", 1.6]],
-					}}
-					axisTop={null}
-					axisRight={null}
-					axisBottom={{
-						tickSize: 5,
-						tickPadding: 5,
-						tickRotation: 30,
-						legend: "user",
-						legendPosition: "middle",
-						legendOffset: 47,
-					}}
-					axisLeft={{
-						tickSize: 5,
-						tickPadding: 5,
-						tickRotation: 0,
-						legend: "commits",
-						legendPosition: "middle",
-						legendOffset: -40,
-					}}
-					labelSkipWidth={12}
-					labelSkipHeight={12}
-					labelTextColor={{
-						from: "color",
-						modifiers: [["darker", 1.6]],
-					}}
-					legends={[]}
-					animate={true}
-					motionStiffness={90}
-					motionDamping={15}
-				/>
+				<div className="graph-group">
+					<div className="graph-container-sml">
+						<ResponsiveLine
+							data={this.state.data.commits}
+							margin={{
+								top: 20,
+								right: 120,
+								bottom: 50,
+								left: 60,
+							}}
+							xScale={{
+								type: "time",
+								format: "%Y-%m-%d",
+								precision: "day",
+							}}
+							xFormat="time:%Y-%m-%d"
+							yScale={{
+								type: "linear",
+								stacked: true,
+								min: "auto",
+								max: "auto",
+							}}
+							curve="monotoneX"
+							enableArea={true}
+							enableGridX={false}
+							areaOpacity={1}
+							axisTop={null}
+							axisRight={null}
+							axisBottom={{
+								format: "%b %d",
+								tickValues: "every 32 days",
+								legend: "time scale",
+								legendOffset: -12,
+							}}
+							axisLeft={{
+								orient: "left",
+								tickSize: 5,
+								tickPadding: 5,
+								tickRotation: 0,
+								legend: "commits",
+								legendOffset: -40,
+								legendPosition: "middle",
+							}}
+							colors={{ scheme: "nivo" }}
+							enablePoints={false}
+							useMesh={true}
+							legends={[
+								{
+									anchor: "bottom-right",
+									direction: "column",
+									justify: false,
+									translateX: 100,
+									translateY: 0,
+									itemsSpacing: 0,
+									itemDirection: "left-to-right",
+									itemWidth: 80,
+									itemHeight: 20,
+									itemOpacity: 0.75,
+									symbolSize: 12,
+									symbolShape: "circle",
+									symbolBorderColor: "rgba(0, 0, 0, .5)",
+									effects: [
+										{
+											on: "hover",
+											style: {
+												itemBackground:
+													"rgba(0, 0, 0, .03)",
+												itemOpacity: 1,
+											},
+										},
+									],
+								},
+							]}
+						/>
+					</div>
+					<div className="graph-container-sml">
+						<ResponsiveLine
+							data={this.state.data.lineCounts}
+							margin={{
+								top: 20,
+								right: 120,
+								bottom: 50,
+								left: 60,
+							}}
+							xScale={{
+								type: "time",
+								format: "%Y-%m-%d",
+								precision: "day",
+							}}
+							yScale={{
+								type: "linear",
+								stacked: true,
+								min: "auto",
+								max: "auto",
+							}}
+							curve="monotoneX"
+							xFormat="time:%Y-%m-%d"
+							axisTop={null}
+							axisRight={null}
+							enableGridX={false}
+							axisBottom={{
+								format: "%b %d",
+								tickValues: "every 32 days",
+								legend: "time scale",
+								legendOffset: -12,
+							}}
+							axisLeft={{
+								orient: "left",
+								tickSize: 5,
+								tickPadding: 5,
+								tickRotation: 0,
+								legend: "lines",
+								legendOffset: -40,
+								legendPosition: "middle",
+							}}
+							colors={{ scheme: "nivo" }}
+							useMesh={true}
+							legends={[
+								{
+									anchor: "bottom-right",
+									direction: "column",
+									justify: false,
+									translateX: 100,
+									translateY: 0,
+									itemsSpacing: 0,
+									itemDirection: "left-to-right",
+									itemWidth: 80,
+									itemHeight: 20,
+									itemOpacity: 0.75,
+									symbolSize: 12,
+									symbolShape: "circle",
+									symbolBorderColor: "rgba(0, 0, 0, .5)",
+									effects: [
+										{
+											on: "hover",
+											style: {
+												itemBackground:
+													"rgba(0, 0, 0, .03)",
+												itemOpacity: 1,
+											},
+										},
+									],
+								},
+							]}
+						/>
+					</div>
+				</div>
 			);
 		} else {
 			return <div className="loading">Loading...</div>;
 		}
 	};
 
+	componentDidUpdate() {
+		this.getData();
+	}
+
 	getData = () => {
-		let loader = new CommitsData();
-		loader.getData((data) => {
-			debugger;
-			this.setState({ data: data, dataRecieved: true });
-		});
+		if (
+			this.state.dataRecieved === false &&
+			this.state.user !== undefined
+		) {
+			let loader = new CommitsData();
+			loader.getContributorData((data) => {
+				debugger;
+				this.setState({ data: data, dataRecieved: true });
+			}, this.state.user);
+		}
 	};
+
 	componentDidMount() {
 		this.updateWindowDimensions();
 		window.addEventListener("resize", this.updateWindowDimensions);

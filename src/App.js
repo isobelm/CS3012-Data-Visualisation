@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import history from "./utils/history";
 import TypesOfInteractionGraph from "./pages/TypesOfInteractionsGraph";
 import Commits from "./pages/Commits";
+import Contributions from "./pages/Contributions";
 
 function App() {
 	return (
@@ -21,6 +22,10 @@ function App() {
 						exact
 						path="/commits-per-person"
 						component={Commits}
+					/>
+					<Route
+						path="/commits-per-person/:contributor"
+						component={Contributions}
 					/>
 				</Switch>
 			</Router>

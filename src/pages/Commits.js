@@ -33,8 +33,14 @@ class Commits extends Component {
 			<div>
 				<div className="info-header">Commits Per Person</div>
 				<div className="info">
-					This graph shows the number of commits made by the 20 people
-					with the most commits.
+					<p>
+						This graph shows the number of commits made by the 20
+						contributors with the most commits.
+					</p>
+					<p className="bold">
+						The bars can be clicked on to show that person's commits
+						over time.
+					</p>
 				</div>
 			</div>
 		);
@@ -98,6 +104,7 @@ class Commits extends Component {
 						from: "color",
 						modifiers: [["darker", 1.6]],
 					}}
+					onClick={this.onClick}
 					legends={[]}
 					animate={true}
 					motionStiffness={90}
@@ -109,6 +116,10 @@ class Commits extends Component {
 		}
 	};
 
+	onClick = (click) => {
+		this.state.history.push("/commits-per-person/" + click.indexValue);
+	};
+
 	getData = () => {
 		let loader = new CommitsData();
 		loader.getData((data) => {
@@ -116,6 +127,7 @@ class Commits extends Component {
 			this.setState({ data: data, dataRecieved: true });
 		});
 	};
+
 	componentDidMount() {
 		this.updateWindowDimensions();
 		window.addEventListener("resize", this.updateWindowDimensions);

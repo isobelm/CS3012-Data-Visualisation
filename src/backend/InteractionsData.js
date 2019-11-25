@@ -68,7 +68,6 @@ class InteractionDataLoader {
 			this.addCommit(commit, data);
 		});
 		this.partsLoaded++;
-		debugger;
 
 		if (this.partsLoaded >= 10) {
 			loadData(data);

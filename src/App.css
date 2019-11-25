@@ -4,7 +4,7 @@
 	--header-red: #e77361;
 	--main-yellow: #ffdf9b;
 	--hover-yellow: #fcce6d;
-	--button-text: #5e4b25;
+	--button-text: #d8a86a;
 	--text-on-yellow: #5a3f2e;
 }
 
@@ -71,15 +71,39 @@
 }
 
 .GraphButton-image {
+	height: 70%;
+	width: 100%;
+	overflow: hidden;
+	/* display: inline-block; */
+	/* border-spacing: 0 0; */
+}
+
+.ButtonContents {
+	/* display: inline; */
+	/* border-spacing: 0 0; */
+	overflow: hidden;
 	height: 100%;
 	width: 100%;
-	object-fit: cover;
-	overflow: hidden;
+}
+
+.GraphButton-title {
+	height: auto;
+	width: 100%;
+	padding: 5px;
+	color: var(--button-text);
+
+	background: var(--main-yellow);
+	/* justify-content: center; */
+	/* border-spacing: 0 0; */
+	font-weight: 300;
+	font-size: calc(5px + 30%);
+	/* display: inline-block; */
 }
 
 .GraphButton:hover,
 .GraphButton:focus {
 	cursor: pointer;
+	mix-blend-mode: normal;
 }
 
 .GraphPage {
@@ -113,10 +137,20 @@
 }
 
 .graph-container {
-	min-height: 92vh;
+	height: 92vh;
 	width: 68vw;
 	color: #3d261d;
 	justify-content: center;
+}
+
+.graph-container-sml {
+	height: 46vh;
+}
+
+.graph-group {
+	/* display: table; */
+	height: 92vh;
+	width: 100%;
 }
 
 .graph-info,
@@ -170,4 +204,8 @@
 	line-height: calc(4px + 3vmin);
 	text-align: left;
 	padding: 0 4vmin;
+}
+
+.bold {
+	font-weight: bold;
 }

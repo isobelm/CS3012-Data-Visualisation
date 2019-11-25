@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import img from "../graphics/circle_graph.svg";
 
 class GraphButton extends Component {
 	constructor(props) {
@@ -10,6 +9,8 @@ class GraphButton extends Component {
 			title: this.props.title,
 			history: this.props.history,
 			page: this.props.page,
+			img: this.props.img,
+			imgStyle: this.props.imgStyle,
 		};
 	}
 
@@ -20,11 +21,16 @@ class GraphButton extends Component {
 				onClick={this.onClick}
 				history={this.state.history}
 			>
+				{/* <div className="ButtonContents"> */}
+				<div className="GraphButton-title">{this.state.title}</div>
 				<img
 					className="GraphButton-image"
-					src={img}
+					src={this.state.img}
 					alt={this.state.title}
+					style={this.state.imgStyle}
 				/>
+				{/* <div className="GraphButton-title">{this.state.title}</div> */}
+				{/* </div> */}
 			</div>
 		);
 	}

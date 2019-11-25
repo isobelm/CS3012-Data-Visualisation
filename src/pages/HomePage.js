@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import GraphButton from "../components/GraphButton";
+import circleGraph from "../graphics/circle_graph.svg";
+import barChart from "../graphics/bar_chart.svg";
 
 class HomePage extends Component {
 	constructor(props) {
@@ -12,8 +14,18 @@ class HomePage extends Component {
 		return (
 			<div className="HomePage">
 				<div className="graph-buttons">
-					<GraphButton title="graph 1" page="interaction-types" />
-					<GraphButton title="graph 2" page="commits-per-person" />
+					<GraphButton
+						title="Commits Per Person"
+						page="commits-per-person"
+						img={barChart}
+						imgStyle={{}}
+					/>
+					{/* <GraphButton
+						title="graph 2"
+						page="commits-per-person"
+						img={barChart}
+						imgStyle={{}}
+					/> */}
 				</div>
 				<div className="HomePage-header">
 					<div className="HomePage-header-title">
@@ -21,9 +33,12 @@ class HomePage extends Component {
 					</div>
 				</div>
 				<div className="graph-buttons">
-					<GraphButton title="graph 3" />
-					<GraphButton title="graph 4" />
-					<GraphButton title="graph 4" />
+					<GraphButton
+						title="Interaction Types"
+						page="interaction-types"
+						img={circleGraph}
+						imgStyle={{ objectFit: "cover" }}
+					/>
 				</div>
 			</div>
 		);

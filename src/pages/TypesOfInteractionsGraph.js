@@ -54,7 +54,7 @@ class TypesOfInteractionGraph extends Component {
 					margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
 					identity="name"
 					value="loc"
-					colors={Object.values(colours)}
+					colors={{ scheme: "paired" }}
 					colorBy="color"
 					padding={6}
 					enableLabel={false}
