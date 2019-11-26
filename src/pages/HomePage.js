@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import GraphButton from "../components/GraphButton";
 import circleGraph from "../graphics/circle_graph.svg";
 import barChart from "../graphics/bar_chart.svg";
+import lineChart from "../graphics/line_chart.svg";
 
 class HomePage extends Component {
 	constructor(props) {
@@ -20,16 +21,16 @@ class HomePage extends Component {
 						img={barChart}
 						imgStyle={{}}
 					/>
-					{/* <GraphButton
-						title="graph 2"
-						page="commits-per-person"
-						img={barChart}
+					<GraphButton
+						title="Commits Over Time"
+						page="commits-over-time"
+						img={lineChart}
 						imgStyle={{}}
-					/> */}
+					/>
 				</div>
 				<div className="HomePage-header">
 					<div className="HomePage-header-title">
-						Data Visualisation
+						CS3012 Data Visualisation
 					</div>
 				</div>
 				<div className="graph-buttons">

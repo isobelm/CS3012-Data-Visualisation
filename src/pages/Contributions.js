@@ -86,7 +86,7 @@ class Commits extends Component {
 								legendOffset: -40,
 								legendPosition: "middle",
 							}}
-							colors={{ scheme: "nivo" }}
+							colors={{ scheme: "paired" }}
 							enablePoints={false}
 							useMesh={true}
 							legends={[
@@ -158,7 +158,7 @@ class Commits extends Component {
 								legendOffset: -40,
 								legendPosition: "middle",
 							}}
-							colors={{ scheme: "nivo" }}
+							colors={{ scheme: "paired" }}
 							useMesh={true}
 							legends={[
 								{

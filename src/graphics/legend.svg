@@ -9,42 +9,42 @@
         <g clip-path="url(#_clip1)">
             <g>
                 <g transform="matrix(1,0,0,1,-18.3028,-95.3334)">
-                    <text x="104.901px" y="754.626px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:16px;fill:rgb(122,86,63);">Commits authored</text>
+                    <text x="104.901px" y="754.626px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:16px;fill:rgb(90,63,46);">Commits authored</text>
                 </g>
                 <g transform="matrix(1,0,0,1,-13.0619,31.9125)">
-                    <text x="99.222px" y="723.431px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:16px;fill:rgb(122,86,63);">Pull requests</text>
+                    <text x="99.222px" y="723.431px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:16px;fill:rgb(90,63,46);">Pull requests</text>
                 </g>
                 <g transform="matrix(1,0,0,1,-15.0801,2.54154)">
-                    <text x="100.983px" y="689.204px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:16px;fill:rgb(122,86,63);">Issues created</text>
+                    <text x="100.983px" y="689.204px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:16px;fill:rgb(90,63,46);">Issues created</text>
                 </g>
                 <g transform="matrix(1,0,0,1,-12.1228,67.163)">
-                    <text x="98.721px" y="657.223px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:16px;fill:rgb(122,86,63);">Commits made</text>
+                    <text x="98.721px" y="657.223px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:16px;fill:rgb(90,63,46);">Commits made</text>
                 </g>
                 <g transform="matrix(1,0,0,1,-11.2602,1.33805)">
-                    <text x="97.858px" y="625.407px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:16px;fill:rgb(122,86,63);">Contributor</text>
+                    <text x="97.858px" y="625.407px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:16px;fill:rgb(90,63,46);">Contributor</text>
                 </g>
                 <g transform="matrix(1,0,0,1,-402.973,415.437)">
-                    <text x="489.11px" y="178.667px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:16px;fill:rgb(122,86,63);">Repository</text>
+                    <text x="489.11px" y="178.667px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:16px;fill:rgb(90,63,46);">Repository</text>
                 </g>
             </g>
             <g transform="matrix(1.09454,0,0,1.09454,-8.3894,-66.2638)">
                 <g transform="matrix(0.685868,0,0,0.685868,16.5119,184.959)">
-                    <circle cx="66.25" cy="602.48" r="13.686" style="fill:rgb(255,239,205);"/>
+                    <circle cx="66.25" cy="602.48" r="13.686" style="fill:rgb(166,206,227);"/>
                 </g>
                 <g transform="matrix(0.685868,0,0,0.685868,16.5119,214.695)">
-                    <circle cx="66.25" cy="602.48" r="13.686" style="fill:rgb(255,223,155);"/>
+                    <circle cx="66.25" cy="602.48" r="13.686" style="fill:rgb(34,120,180);"/>
                 </g>
                 <g transform="matrix(0.685868,0,0,0.685868,16.5119,244.431)">
-                    <circle cx="66.25" cy="602.48" r="13.686" style="fill:rgb(250,154,139);"/>
+                    <circle cx="66.25" cy="602.48" r="13.686" style="fill:rgb(52,160,45);"/>
                 </g>
                 <g transform="matrix(0.685868,0,0,0.685868,16.5119,274.167)">
-                    <circle cx="66.25" cy="602.48" r="13.686" style="fill:rgb(254,255,186);"/>
+                    <circle cx="66.25" cy="602.48" r="13.686" style="fill:rgb(178,223,138);"/>
                 </g>
                 <g transform="matrix(0.685868,0,0,0.685868,16.5119,303.903)">
-                    <circle cx="66.25" cy="602.48" r="13.686" style="fill:rgb(171,215,227);"/>
+                    <circle cx="66.25" cy="602.48" r="13.686" style="fill:rgb(251,155,154);"/>
                 </g>
                 <g transform="matrix(0.685868,0,0,0.685868,16.5119,333.639)">
-                    <circle cx="66.25" cy="602.48" r="13.686" style="fill:rgb(187,133,98);"/>
+                    <circle cx="66.25" cy="602.48" r="13.686" style="fill:rgb(227,27,27);"/>
                 </g>
             </g>
         </g>

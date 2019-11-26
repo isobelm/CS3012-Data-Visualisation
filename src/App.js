@@ -4,8 +4,9 @@ import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import history from "./utils/history";
 import TypesOfInteractionGraph from "./pages/TypesOfInteractionsGraph";
-import Commits from "./pages/Commits";
+import Commits from "./pages/CommitsPerPerson";
 import Contributions from "./pages/Contributions";
+import CommitsOverTime from "./pages/CommitsOverTime";
 
 function App() {
 	return (
@@ -26,6 +27,11 @@ function App() {
 					<Route
 						path="/commits-per-person/:contributor"
 						component={Contributions}
+					/>
+					<Route
+						exact
+						path="/commits-over-time"
+						component={CommitsOverTime}
 					/>
 				</Switch>
 			</Router>

@@ -17,6 +17,46 @@ class CommitsData {
 		loadData(data.slice(data.length - 20, data.length).reverse());
 	}
 
+	async getCommitsOverTime(loadData) {
+		let data = [];
+		let contributors = await this.octokit.repos.getContributorsStats({
+			owner: "plouc",
+			repo: "nivo",
+		});
+		debugger;
+
+		contributors.data.forEach((contributor) => {
+			let cData = {};
+			cData.user = contributor.author.login;
+			cData.color = Math.floor(Math.random() * 6);
+			let dataByWeek = [];
+			let weeks = contributor.weeks.slice(
+				contributor.weeks.length / 2,
+				contributor.weeks.length
+			);
+			weeks.forEach((week) => {
+				let date = new Date(week.w * 1000);
+				let dateString =
+					date.getFullYear() +
+					"-" +
+					date.getMonth() +
+					"-" +
+					date.getDate();
+				dataByWeek.push({
+					x: dateString,
+					y: week.c,
+				});
+			});
+
+			debugger;
+			cData.data = dataByWeek;
+
+			data.push(cData);
+		});
+
+		loadData(data);
+	}
+
 	async getContributorData(loadData, user) {
 		let data = {
 			lineCounts: [

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import GraphPage from "./GraphPage";
-import { ResponsiveBar } from "@nivo/bar";
+import { ResponsiveLine } from "@nivo/line";
 import CommitsData from "../backend/CommitsData";
 
 class Commits extends Component {
@@ -23,7 +23,7 @@ class Commits extends Component {
 			<GraphPage
 				graph={this.renderGraph}
 				info={this.renderInfo}
-				title={"Commits Per Person"}
+				title={"Commits Over Time"}
 			/>
 		);
 	}
@@ -31,15 +31,10 @@ class Commits extends Component {
 	renderInfo = () => {
 		return (
 			<div>
-				<div className="info-header">Commits Per Person</div>
+				<div className="info-header">Commits Over Time</div>
 				<div className="info">
 					<p>
-						This graph shows the number of commits made by the 20
-						contributors with the most commits.
-					</p>
-					<p className="bold">
-						The bars can be clicked on to show that person's commits
-						over time.
+						This graph shows the number of commits made over time.
 					</p>
 				</div>
 			</div>
@@ -49,66 +44,73 @@ class Commits extends Component {
 	renderGraph = () => {
 		if (this.state.dataRecieved) {
 			return (
-				<ResponsiveBar
+				<ResponsiveLine
 					data={this.state.data}
-					keys={["Commits"]}
-					indexBy="User"
-					margin={{ top: 50, right: 60, bottom: 70, left: 60 }}
-					padding={0.3}
-					colors={{ scheme: "nivo" }}
-					defs={[
-						{
-							id: "dots",
-							type: "patternDots",
-							background: "inherit",
-							color: "#38bcb2",
-							size: 4,
-							padding: 1,
-							stagger: true,
-						},
-						{
-							id: "lines",
-							type: "patternLines",
-							background: "inherit",
-							color: "#eed312",
-							rotation: -45,
-							lineWidth: 6,
-							spacing: 10,
-						},
-					]}
-					borderColor={{
-						from: "color",
-						modifiers: [["darker", 1.6]],
+					margin={{
+						top: 20,
+						right: 60,
+						bottom: 50,
+						left: 60,
 					}}
+					xScale={{
+						type: "time",
+						format: "%Y-%m-%d",
+						precision: "day",
+					}}
+					yScale={{
+						type: "linear",
+						stacked: true,
+						min: "auto",
+						max: "auto",
+					}}
+					curve="monotoneX"
+					xFormat="time:%Y-%m-%d"
+					// colorBy="serieId"
 					axisTop={null}
 					axisRight={null}
+					enableGridX={false}
 					axisBottom={{
-						tickSize: 5,
-						tickPadding: 5,
-						tickRotation: 30,
-						legend: "user",
-						legendPosition: "middle",
-						legendOffset: 47,
+						format: "%b %d",
+						tickValues: "every 2 months",
+						legend: "time scale",
+						legendOffset: -12,
 					}}
 					axisLeft={{
+						orient: "left",
 						tickSize: 5,
 						tickPadding: 5,
 						tickRotation: 0,
 						legend: "commits",
-						legendPosition: "middle",
 						legendOffset: -40,
+						legendPosition: "middle",
 					}}
-					labelSkipWidth={12}
-					labelSkipHeight={12}
-					labelTextColor={{
-						from: "color",
-						modifiers: [["darker", 1.6]],
+					colors={{ scheme: "paired" }}
+					useMesh={true}
+					animate={false}
+					sliceTooltip={({ slice }) => {
+						return (
+							<div
+								style={{
+									background: "white",
+									padding: "9px 12px",
+									border: "1px solid #ccc",
+								}}
+							>
+								<div>x: {slice.id}</div>
+								{slice.points.map((point) => (
+									<div
+										key={point.id}
+										style={{
+											color: point.serieColor,
+											padding: "3px 0",
+										}}
+									>
+										<strong>{point.user}</strong>
+									</div>
+								))}
+							</div>
+						);
 					}}
-					onClick={this.onClick}
-					legends={[]}
-					animate={true}
-					motionStiffness={90}
-					motionDamping={15}
 				/>
 			);
 		} else {
@@ -122,8 +124,7 @@ class Commits extends Component {
 
 	getData = () => {
 		let loader = new CommitsData();
-		loader.getData((data) => {
-			debugger;
+		loader.getCommitsOverTime((data) => {
 			this.setState({ data: data, dataRecieved: true });
 		});
 	};
