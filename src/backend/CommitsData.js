@@ -35,15 +35,8 @@ class CommitsData {
 				contributor.weeks.length
 			);
 			weeks.forEach((week) => {
-				let date = new Date(week.w * 1000);
-				let dateString =
-					date.getFullYear() +
-					"-" +
-					date.getMonth() +
-					"-" +
-					date.getDate();
 				dataByWeek.push({
-					x: dateString,
+					x: this.getDateString(week.w),
 					y: week.c,
 				});
 			});
@@ -53,6 +46,56 @@ class CommitsData {
 
 			data.push(cData);
 		});
+
+		loadData(data);
+	}
+
+	getDateString = (dateInt) => {
+		let date = new Date(dateInt * 1000);
+		return (
+			date.getFullYear() + "-" + date.getMonth() + "-" + date.getDate()
+		);
+	};
+
+	async getLineCountData(loadData) {
+		let data = [
+			{
+				id: "Lines Added",
+				data: [],
+			},
+			{
+				id: "Lines Deleted",
+				data: [],
+			},
+		];
+
+		let contributors = await this.octokit.repos.getContributorsStats({
+			owner: "plouc",
+			repo: "nivo",
+		});
+
+		contributors.data[0].weeks.forEach((week) => {
+			debugger;
+			let point = {
+				x: this.getDateString(week.w),
+				y: 0,
+			};
+			debugger;
+			data[0].data.push(point);
+			data[1].data.push(point);
+			debugger;
+		});
+
+		contributors.data.forEach((contributor) => {
+			for (let i = 0; i < contributor.weeks.length; i++) {
+				let week = contributor.weeks[i];
+
+				data[0].data[i].y += week.a;
+				data[1].data[i].y += week.d;
+			}
+		});
+
+		debugger;
 
 		loadData(data);
 	}
@@ -75,7 +118,6 @@ class CommitsData {
 					data: [],
 				},
 			],
-			ticks: [],
 		};
 		let contributors = await this.octokit.repos.getContributorsStats({
 			owner: "plouc",
@@ -96,24 +138,17 @@ class CommitsData {
 			)
 				useful = true;
 			if (useful) {
-				let date = new Date(week.w * 1000);
-				let dateString =
-					date.getFullYear() +
-					"-" +
-					date.getMonth() +
-					"-" +
-					date.getDate();
 				data.lineCounts[0].data.push({
-					x: dateString,
+					x: this.getDateString(week.w),
 					y: week.a,
 				});
 				data.lineCounts[1].data.push({
-					x: dateString,
+					x: this.getDateString(week.w),
 					y: week.d,
 				});
 
 				data.commits[0].data.push({
-					x: dateString,
+					x: this.getDateString(week.w),
 					y: week.c,
 				});
 			}

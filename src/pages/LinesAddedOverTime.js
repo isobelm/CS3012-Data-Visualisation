@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import GraphPage from "./GraphPage";
 import CommitsData from "../backend/CommitsData";
-import noLegendLineGraph from "../components/Graphs";
+import { lineGraph } from "../components/Graphs";
 
 class Commits extends Component {
 	constructor(props) {
@@ -23,7 +23,7 @@ class Commits extends Component {
 			<GraphPage
 				graph={this.renderGraph}
 				info={this.renderInfo}
-				title={"Commits Over Time"}
+				title={"Lines Over Time"}
 			/>
 		);
 	}
@@ -31,10 +31,11 @@ class Commits extends Component {
 	renderInfo = () => {
 		return (
 			<div>
-				<div className="info-header">Commits Over Time</div>
+				<div className="info-header">Lines Over Time</div>
 				<div className="info">
 					<p>
-						This graph shows the number of commits made over time.
+						This graph shows the total number of lines added and
+						deleted from the repo over time.
 					</p>
 				</div>
 			</div>
@@ -43,7 +44,7 @@ class Commits extends Component {
 
 	renderGraph = () => {
 		if (this.state.dataRecieved) {
-			return noLegendLineGraph(this.state.data);
+			return lineGraph(this.state.data);
 		} else {
 			return <div className="loading">Loading...</div>;
 		}
@@ -55,7 +56,7 @@ class Commits extends Component {
 
 	getData = () => {
 		let loader = new CommitsData();
-		loader.getCommitsOverTime((data) => {
+		loader.getLineCountData((data) => {
 			this.setState({ data: data, dataRecieved: true });
 		});
 	};

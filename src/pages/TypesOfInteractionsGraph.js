@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import GraphPage from "./GraphPage";
 import { ResponsiveBubble } from "@nivo/circle-packing";
 import InteractionDataLoader from "../backend/InteractionsData";
-import colours from "../utils/colourSchemes";
 import legend from "../graphics/legend.svg";
 
 class TypesOfInteractionGraph extends Component {

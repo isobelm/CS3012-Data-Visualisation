@@ -7,6 +7,7 @@ import TypesOfInteractionGraph from "./pages/TypesOfInteractionsGraph";
 import Commits from "./pages/CommitsPerPerson";
 import Contributions from "./pages/Contributions";
 import CommitsOverTime from "./pages/CommitsOverTime";
+import LinesAddedOverTime from "./pages/LinesAddedOverTime";
 
 function App() {
 	return (
@@ -32,6 +33,11 @@ function App() {
 						exact
 						path="/commits-over-time"
 						component={CommitsOverTime}
+					/>
+					<Route
+						exact
+						path="/lines-over-time"
+						component={LinesAddedOverTime}
 					/>
 				</Switch>
 			</Router>
