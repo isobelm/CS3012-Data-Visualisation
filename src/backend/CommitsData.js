@@ -30,11 +30,7 @@ class CommitsData {
 			cData.user = contributor.author.login;
 			cData.color = Math.floor(Math.random() * 6);
 			let dataByWeek = [];
-			let weeks = contributor.weeks.slice(
-				contributor.weeks.length / 2,
-				contributor.weeks.length
-			);
-			weeks.forEach((week) => {
+			contributor.weeks.forEach((week) => {
 				dataByWeek.push({
 					x: this.getDateString(week.w),
 					y: week.c,
