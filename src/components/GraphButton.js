@@ -21,7 +21,6 @@ class GraphButton extends Component {
 				onClick={this.onClick}
 				history={this.state.history}
 			>
-				{/* <div className="ButtonContents"> */}
 				<div className="GraphButton-title">{this.state.title}</div>
 				<img
 					className="GraphButton-image"
@@ -29,8 +28,6 @@ class GraphButton extends Component {
 					alt={this.state.title}
 					style={this.state.imgStyle}
 				/>
-				{/* <div className="GraphButton-title">{this.state.title}</div> */}
-				{/* </div> */}
 			</div>
 		);
 	}

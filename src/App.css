@@ -93,11 +93,8 @@
 	color: var(--button-text);
 
 	background: var(--main-yellow);
-	/* justify-content: center; */
-	/* border-spacing: 0 0; */
 	font-weight: 300;
 	font-size: calc(5px + 30%);
-	/* display: inline-block; */
 }
 
 .GraphButton:hover,
@@ -148,7 +145,6 @@
 }
 
 .graph-group {
-	/* display: table; */
 	height: 92vh;
 	width: 100%;
 }
